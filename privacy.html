@@ -5,26 +5,507 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Privacy Policy – Footprints</title>
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-    h1 { color: #6200EE; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: white;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: slideDown 0.8s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      animation: slideRight 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 0.8; transform: translateX(0); }
+    }
+
+    .back-link:hover {
+      color: white;
+      transform: translateX(-5px);
+    }
+
+    .title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #fff, #f0f8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .content {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+      background-size: 300% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .intro {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      border-left: 4px solid #4ECDC4;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.5rem 0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 25px;
+      background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+      border-radius: 2px;
+    }
+
+    .privacy-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .privacy-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .privacy-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #4ECDC4, #45B7D1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .privacy-list li:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(8px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .privacy-list li:hover::before {
+      opacity: 1;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .guarantee {
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15), rgba(69, 183, 209, 0.15));
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      border-radius: 20px;
+      padding: 3.5rem 2rem 2.5rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .guarantee::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      border-radius: 20px;
+      z-index: -2;
+    }
+
+    .guarantee::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15), rgba(69, 183, 209, 0.15));
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .guarantee-icon {
+      font-size: 3.5rem;
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+      padding: 0.75rem;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      width: 5rem;
+      height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 107, 107, 0.3);
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { 
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 107, 107, 0.3);
+      }
+      50% { 
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 107, 0.5);
+      }
+    }
+
+    .guarantee h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      margin-top: 1rem;
+      background: linear-gradient(45deg, #fff, #4ECDC4, #FF6B6B);
+      background-size: 300% 300%;
+      animation: textShimmer 4s ease-in-out infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes textShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .guarantee p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #FFD700;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #4ECDC4;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 25px;
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .email-link:hover {
+      background: rgba(78, 205, 196, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+      border-color: rgba(78, 205, 196, 0.5);
+    }
+
+    .floating-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      top: 50%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(3) {
+      bottom: 30%;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .content {
+        padding: 2rem 1.5rem;
+      }
+      
+      .privacy-list li {
+        padding: 1rem;
+      }
+      
+      .title {
+        font-size: 2.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy – Footprints</h1>
+  <div class="floating-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 
-  <p><strong>Footprints</strong> uses the Strava and Garmin APIs to import your running activities after you authorize the app via their official login flows.</p>
+  <div class="container">
+    <a href="index.html" class="back-link">
+      ← Back to Footprints
+    </a>
 
-  <p>Here is how we use your data:</p>
-  <ul>
-    <li>We access your public running activities to calculate and visualize your running coverage across city districts.</li>
-    <li>We do not access or store private activities unless you explicitly authorize access in Strava or Garmin Connect.</li>
-    <li>Your data is never shared with third parties.</li>
-    <li>Your data is not used for advertising or profiling.</li>
-    <li>You can disconnect your accounts at any time via Strava or Garmin settings.</li>
-  </ul>
+    <div class="header">
+      <h1 class="title">Privacy Policy</h1>
+      <p class="subtitle">Your data, your control – always</p>
+    </div>
 
-  <p>All activity data is used only within the app to display your runs, stats, and badges.</p>
+    <div class="content">
+      <div class="intro">
+        <strong>Footprints</strong> respects your privacy and is committed to transparency. We use the Strava and Garmin APIs to import your running activities only after you authorize the app through their official, secure login flows.
+      </div>
 
-  <p>For questions or data deletion requests, please contact <a href="mailto:gustav.manthorpe@gmail.com">gustav.manthorpe@gmail.com</a>.</p>
+      <h2 class="section-title">How We Handle Your Data</h2>
+      
+      <ul class="privacy-list">
+        <li>
+          <span class="icon">🏃‍♂️</span>
+          <div>
+            <strong>Activity Access:</strong> We only access your public running activities to calculate and visualize your running coverage across city districts. Your private activities remain private.
+          </div>
+        </li>
+
+        <li>
+          <span class="icon">🔒</span>
+          <div>
+            <strong>Privacy Control:</strong> We do not access or store private activities unless you explicitly authorize access in Strava or Garmin Connect settings.
+          </div>
+        </li>
+
+        <li>
+          <span class="icon">🚫</span>
+          <div>
+            <strong>No Third-Party Sharing:</strong> Your data is never shared with third parties, advertisers, or any external services. It stays within Footprints.
+          </div>
+        </li>
+
+        <li>
+          <span class="icon">📊</span>
+          <div>
+            <strong>No Profiling:</strong> Your data is not used for advertising, profiling, or any commercial purposes beyond the core app functionality.
+          </div>
+        </li>
+
+        <li>
+          <span class="icon">⚙️</span>
+          <div>
+            <strong>Full Control:</strong> You can disconnect your accounts at any time via your Strava or Garmin Connect settings. Your choice, always.
+          </div>
+        </li>
+      </ul>
+
+      <div class="guarantee">
+        <div class="guarantee-icon">🛡️</div>
+        <h3>Our Promise</h3>
+        <p>All activity data is used exclusively within the Footprints app to display your runs, statistics, and achievement badges. Nothing more, nothing less.</p>
+      </div>
+
+      <div class="contact-section">
+        <h3>Questions or Concerns?</h3>
+        <p>For questions, data deletion requests, or any privacy concerns, please don't hesitate to reach out:</p>
+        <br>
+        <a href="mailto:gustav.manthorpe@gmail.com" class="email-link">
+          📧 gustav.manthorpe@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add smooth scroll animation for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add entrance animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out both';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.privacy-list li').forEach(li => {
+      observer.observe(li);
+    });
+
+    // Mouse movement parallax effect
+    document.addEventListener('mousemove', function(e) {
+      const particles = document.querySelectorAll('.particle');
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      
+      particles.forEach((particle, index) => {
+        const speed = (index + 1) * 0.3;
+        const x = (mouseX - 0.5) * speed * 30;
+        const y = (mouseY - 0.5) * speed * 30;
+        particle.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+  </script>
 </body>
 </html>

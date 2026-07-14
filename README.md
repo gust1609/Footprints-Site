@@ -13,3 +13,13 @@ python3 -m http.server 4173
 Åbn derefter `http://127.0.0.1:4173/`.
 
 Den iterative design- og QA-proces er beskrevet i [`ITERATION_PROMPT.md`](ITERATION_PROMPT.md).
+
+## Validering
+
+Kør den lokale sitekontrol før deploy:
+
+```bash
+node scripts/validate-site.mjs
+```
+
+Kontrollen dækker JSON-LD, canonical-tags, lokale links, billeder, fragmentlinks og parity mellem synlige FAQ-spørgsmål og FAQ-schemaet.

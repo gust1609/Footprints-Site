@@ -1,51 +1,64 @@
 <!-- privacy-da.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#f7f4e9" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Læs hvordan Footprints behandler konto-, Strava-, aktivitets- og lokationsdata, og hvordan du bruger dine GDPR-rettigheder." />
+  <link rel="canonical" href="https://gust1609.github.io/Footprints-Site/privacy-da.html" />
+  <link rel="alternate" hreflang="da" href="https://gust1609.github.io/Footprints-Site/privacy-da.html" />
+  <link rel="alternate" hreflang="en" href="https://gust1609.github.io/Footprints-Site/privacy-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gust1609.github.io/Footprints-Site/privacy-en.html" />
   <title>Privatlivspolitik – Footprints</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    :focus-visible { outline:3px solid #f47b4d; outline-offset:3px; }
+    h1, h2 { text-wrap:balance; }
+    p, li { text-wrap:pretty; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh; color: #fff; line-height: 1.7;
+      background: radial-gradient(circle at 82% 8%, rgba(205,235,114,.28), transparent 24%), #f7f4e9;
+      min-height: 100vh; color: #17372a; line-height: 1.7;
     }
-    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-    .back-link { display:inline-flex; gap:.5rem; color:rgba(255,255,255,.85); text-decoration:none; margin-bottom:2rem; font-weight:500; }
-    .back-link:hover { color:#fff; transform: translateX(-3px); transition: .2s; }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .policy-nav { min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .back-link { min-height:44px; display:inline-flex; align-items:center; gap:.5rem; color:#24513c; text-decoration:none; font-weight:700; transition-property:color,transform; transition-duration:.2s; transition-timing-function:ease-out; }
+    .back-link:hover { color:#17372a; transform: translateX(-3px); }
+    .language-link { min-height:44px; display:inline-flex; align-items:center; padding:0 .9rem; border-radius:12px; background:#fffdf7; color:#24513c; box-shadow:0 0 0 1px rgba(0,0,0,.06),0 8px 20px rgba(23,55,42,.07); font-size:.9rem; font-weight:700; }
     .header { text-align:center; margin-bottom: 2rem; }
     .title {
       font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800; margin-bottom:.5rem;
-      background: linear-gradient(45deg, #fff, #f0f8ff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      text-shadow: 0 0 30px rgba(255,255,255,.25);
+      color:#17372a; letter-spacing:-.05em; line-height:1.05;
     }
-    .subtitle { opacity:.9; font-weight:300; }
+    .subtitle { color:#607068; font-weight:500; }
     .content {
-      background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
-      border-radius:18px; padding: 2rem; backdrop-filter: blur(12px);
-      box-shadow: 0 15px 30px rgba(0,0,0,.15);
+      background: #fffdf7; border-radius:28px; padding: 2.5rem;
+      box-shadow:0 0 0 1px rgba(0,0,0,.06),0 2px 4px rgba(23,55,42,.04),0 24px 56px rgba(23,55,42,.1);
     }
     h2.section { font-size:1.35rem; margin: 1.75rem 0 .75rem; display:flex; align-items:center; gap:.6rem; }
-    h2.section::before { content:''; width:4px; height:22px; background:linear-gradient(45deg,#FF6B6B,#4ECDC4); border-radius:2px; }
+    h2.section::before { content:''; width:4px; height:22px; background:linear-gradient(180deg,#cdeb72,#f47b4d); border-radius:2px; }
     ul { margin-left: 0; list-style:none; }
-    li.item { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
-      border-radius:12px; padding: .9rem 1rem; margin:.6rem 0; }
-    .muted { opacity:.9; }
-    .badge { display:inline-block; padding:.2rem .55rem; border:1px solid rgba(255,255,255,.35); border-radius:999px; font-size:.85rem; }
+    li.item { background:#f7f4e9; border-radius:12px; padding:.9rem 1rem; margin:.6rem 0; box-shadow:0 0 0 1px rgba(0,0,0,.05); }
+    .muted { color:#607068; }
+    .badge { display:inline-block; padding:.2rem .55rem; border-radius:999px; background:#e8f3c8; color:#24513c; font-size:.85rem; font-weight:700; }
     .footer-box {
       margin-top: 1.5rem; padding: 1.25rem; border-radius:12px;
-      background: rgba(78,205,196,.12); border:1px solid rgba(78,205,196,.35);
+      background:#eef3e6; box-shadow:0 0 0 1px rgba(0,0,0,.05);
     }
-    a { color:#FFD700; text-decoration:none; }
+    a { color:#24513c; text-decoration:none; }
     a:hover { text-decoration:underline; }
+    @media (max-width:560px) { .container { padding:1rem; } .content { padding:1.35rem; border-radius:22px; } }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">← Tilbage til Footprints</a>
+    <nav class="policy-nav" aria-label="Privatlivspolitik">
+      <a href="index.html" class="back-link">← Tilbage til Footprints</a>
+      <a href="privacy-en.html" class="language-link" hreflang="en" lang="en">English</a>
+    </nav>
 
     <header class="header">
       <h1 class="title">Privatlivspolitik</h1>
@@ -58,12 +71,12 @@
       <p class="muted"><strong>Kontakt:</strong> <a href="mailto:gustav.manthorpe@gmail.com">gustav.manthorpe@gmail.com</a></p>
 
       <h2 class="section">Hvad appen gør</h2>
-      <p>Footprints hjælper dig med at opdage nye steder i dit lokalområde ved at visualisere, hvor meget af din bydel (veje/distrikter) du har dækket på baggrund af dine aktiviteter fra tjenester som Strava og Garmin.</p>
+      <p>Footprints hjælper dig med at opdage nye steder i dit lokalområde ved at visualisere, hvor meget af din bydel (veje/distrikter) du har dækket på baggrund af dine aktiviteter fra Strava.</p>
 
       <h2 class="section">Hvilke personoplysninger vi behandler</h2>
       <ul>
         <li class="item"><strong>Kontooplysninger:</strong> navn/alias og e-mail (hvis oplyst).</li>
-        <li class="item"><strong>Autorisering:</strong> OAuth-tokens (adgangs- og refresh-tokens) fra Strava/Garmin – kun efter din godkendelse via deres officielle login-flow.</li>
+        <li class="item"><strong>Autorisering:</strong> OAuth-tokens (adgangs- og refresh-tokens) fra Strava – kun efter din godkendelse via deres officielle login-flow.</li>
         <li class="item"><strong>Aktivitetsdata:</strong> dato/tid, distance, varighed, rute/koordinater (GPS), tempo m.m.</li>
         <li class="item"><strong>Afledte data:</strong> bydels-/gadedækning, badges og statistik.</li>
         <li class="item"><strong>Enheds-/driftsdata (ikke-sporende):</strong> app-version samt fejl-/ydelseslogning til fejlfinding.</li>
@@ -74,13 +87,13 @@
       <h2 class="section">Formål og retsgrundlag (GDPR)</h2>
       <ul>
         <li class="item"><strong>Kernefunktioner:</strong> vise ruter, beregne/visualisere dækning, badges og statistik. <em>(Art. 6(1)(b) – aftale)</em></li>
-        <li class="item"><strong>Synkronisering:</strong> import af tidligere/nye aktiviteter via Strava/Garmin. <em>(Art. 6(1)(b))</em></li>
+        <li class="item"><strong>Synkronisering:</strong> import af tidligere/nye aktiviteter via Strava. <em>(Art. 6(1)(b))</em></li>
         <li class="item"><strong>Sikkerhed/fejlretning:</strong> drift, logning og misbrugsforebyggelse. <em>(Art. 6(1)(f) – legitim interesse)</em></li>
-        <li class="item"><strong>Udvidet adgang:</strong> private aktiviteter behandles kun, hvis du udtrykkeligt giver samtykke hos Strava/Garmin. <em>(Art. 6(1)(a) – samtykke)</em></li>
+        <li class="item"><strong>Udvidet adgang:</strong> private aktiviteter behandles kun, hvis du udtrykkeligt giver samtykke hos Strava. <em>(Art. 6(1)(a) – samtykke)</em></li>
       </ul>
 
       <h2 class="section">Kilder</h2>
-      <p>Oplysninger kommer fra dig og de tjenester, du frivilligt forbinder (Strava/Garmin). Du kan altid frakoble adgangen i Strava/Garmin Connect-indstillinger.</p>
+      <p>Oplysninger kommer fra dig og Strava, som du frivilligt forbinder. Du kan altid frakoble adgangen i Stravas indstillinger.</p>
 
       <h2 class="section">Opbevaring og sletning</h2>
       <ul>
@@ -94,7 +107,7 @@
       <ul>
         <li class="item"><strong>Ingen salg/deling til annoncører.</strong></li>
         <li class="item"><strong>Databehandlere (drift):</strong> hosting/infrastruktur (fx Render) og databaseleverandører. De behandler kun data efter vores instruks og under passende aftaler.</li>
-        <li class="item"><strong>Tilkoblede tjenester:</strong> Strava/Garmin modtager kun de kald, der er nødvendige for at importere dine aktiviteter på baggrund af dit samtykke hos dem.</li>
+        <li class="item"><strong>Tilkoblede tjenester:</strong> Strava modtager kun de kald, der er nødvendige for at importere dine aktiviteter på baggrund af dit samtykke hos dem.</li>
       </ul>
 
       <h2 class="section">Internationale overførsler</h2>
@@ -113,8 +126,8 @@
       <h2 class="section">Ændringer</h2>
       <p>Vi kan opdatere denne politik. Ved væsentlige ændringer varsler vi i appen eller via e-mail. Den nyeste version findes i appen og/eller på websitet.</p>
 
-      <h2 class="section">Frakobling af Strava/Garmin</h2>
-      <p>Du kan til enhver tid tilbagekalde adgangen i <strong>Strava</strong> eller <strong>Garmin Connect</strong>. Du kan også frakoble i Footprints’ indstillinger og/eller slette din konto.</p>
+      <h2 class="section">Frakobling af Strava</h2>
+      <p>Du kan til enhver tid tilbagekalde adgangen i <strong>Strava</strong>. Du kan også frakoble i Footprints’ indstillinger og/eller slette din konto.</p>
     </main>
   </div>
 </body>

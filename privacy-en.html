@@ -1,51 +1,64 @@
 <!-- privacy-en.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#f7f4e9" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Learn how Footprints processes account, Strava, activity, and location data, and how you can exercise your privacy rights." />
+  <link rel="canonical" href="https://gust1609.github.io/Footprints-Site/privacy-en.html" />
+  <link rel="alternate" hreflang="da" href="https://gust1609.github.io/Footprints-Site/privacy-da.html" />
+  <link rel="alternate" hreflang="en" href="https://gust1609.github.io/Footprints-Site/privacy-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://gust1609.github.io/Footprints-Site/privacy-en.html" />
   <title>Privacy Policy – Footprints</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    :focus-visible { outline:3px solid #f47b4d; outline-offset:3px; }
+    h1, h2 { text-wrap:balance; }
+    p, li { text-wrap:pretty; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh; color: #fff; line-height: 1.7;
+      background: radial-gradient(circle at 82% 8%, rgba(205,235,114,.28), transparent 24%), #f7f4e9;
+      min-height: 100vh; color: #17372a; line-height: 1.7;
     }
-    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-    .back-link { display:inline-flex; gap:.5rem; color:rgba(255,255,255,.85); text-decoration:none; margin-bottom:2rem; font-weight:500; }
-    .back-link:hover { color:#fff; transform: translateX(-3px); transition: .2s; }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .policy-nav { min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .back-link { min-height:44px; display:inline-flex; align-items:center; gap:.5rem; color:#24513c; text-decoration:none; font-weight:700; transition-property:color,transform; transition-duration:.2s; transition-timing-function:ease-out; }
+    .back-link:hover { color:#17372a; transform: translateX(-3px); }
+    .language-link { min-height:44px; display:inline-flex; align-items:center; padding:0 .9rem; border-radius:12px; background:#fffdf7; color:#24513c; box-shadow:0 0 0 1px rgba(0,0,0,.06),0 8px 20px rgba(23,55,42,.07); font-size:.9rem; font-weight:700; }
     .header { text-align:center; margin-bottom: 2rem; }
     .title {
       font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800; margin-bottom:.5rem;
-      background: linear-gradient(45deg, #fff, #f0f8ff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      text-shadow: 0 0 30px rgba(255,255,255,.25);
+      color:#17372a; letter-spacing:-.05em; line-height:1.05;
     }
-    .subtitle { opacity:.9; font-weight:300; }
+    .subtitle { color:#607068; font-weight:500; }
     .content {
-      background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
-      border-radius:18px; padding: 2rem; backdrop-filter: blur(12px);
-      box-shadow: 0 15px 30px rgba(0,0,0,.15);
+      background: #fffdf7; border-radius:28px; padding: 2.5rem;
+      box-shadow:0 0 0 1px rgba(0,0,0,.06),0 2px 4px rgba(23,55,42,.04),0 24px 56px rgba(23,55,42,.1);
     }
     h2.section { font-size:1.35rem; margin: 1.75rem 0 .75rem; display:flex; align-items:center; gap:.6rem; }
-    h2.section::before { content:''; width:4px; height:22px; background:linear-gradient(45deg,#FF6B6B,#4ECDC4); border-radius:2px; }
+    h2.section::before { content:''; width:4px; height:22px; background:linear-gradient(180deg,#cdeb72,#f47b4d); border-radius:2px; }
     ul { margin-left: 0; list-style:none; }
-    li.item { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
-      border-radius:12px; padding: .9rem 1rem; margin:.6rem 0; }
-    .muted { opacity:.9; }
-    .badge { display:inline-block; padding:.2rem .55rem; border:1px solid rgba(255,255,255,.35); border-radius:999px; font-size:.85rem; }
+    li.item { background:#f7f4e9; border-radius:12px; padding:.9rem 1rem; margin:.6rem 0; box-shadow:0 0 0 1px rgba(0,0,0,.05); }
+    .muted { color:#607068; }
+    .badge { display:inline-block; padding:.2rem .55rem; border-radius:999px; background:#e8f3c8; color:#24513c; font-size:.85rem; font-weight:700; }
     .footer-box {
       margin-top: 1.5rem; padding: 1.25rem; border-radius:12px;
-      background: rgba(78,205,196,.12); border:1px solid rgba(78,205,196,.35);
+      background:#eef3e6; box-shadow:0 0 0 1px rgba(0,0,0,.05);
     }
-    a { color:#FFD700; text-decoration:none; }
+    a { color:#24513c; text-decoration:none; }
     a:hover { text-decoration:underline; }
+    @media (max-width:560px) { .container { padding:1rem; } .content { padding:1.35rem; border-radius:22px; } }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">← Back to Footprints</a>
+    <nav class="policy-nav" aria-label="Privacy policy">
+      <a href="index.html" class="back-link">← Back to Footprints</a>
+      <a href="privacy-da.html" class="language-link" hreflang="da" lang="da">Dansk</a>
+    </nav>
 
     <header class="header">
       <h1 class="title">Privacy Policy</h1>
@@ -58,12 +71,12 @@
       <p class="muted"><strong>Contact:</strong> <a href="mailto:gustav.manthorpe@gmail.com">gustav.manthorpe@gmail.com</a></p>
 
       <h2 class="section">What the app does</h2>
-      <p>Footprints helps you discover new places in your neighborhood by visualizing how much of each district/street you’ve covered based on activities you connect from services like Strava and Garmin.</p>
+      <p>Footprints helps you discover new places in your neighborhood by visualizing how much of each district/street you’ve covered based on activities you connect from Strava.</p>
 
       <h2 class="section">Personal data we process</h2>
       <ul>
         <li class="item"><strong>Account details:</strong> name/alias and email (if provided).</li>
-        <li class="item"><strong>Authorization:</strong> OAuth access/refresh tokens from Strava/Garmin – only after you approve via their official login flows.</li>
+        <li class="item"><strong>Authorization:</strong> OAuth access/refresh tokens from Strava – only after you approve via its official login flow.</li>
         <li class="item"><strong>Activity data:</strong> date/time, distance, duration, route/coordinates (GPS), pace, etc.</li>
         <li class="item"><strong>Derived data:</strong> district/street coverage, badges, statistics.</li>
         <li class="item"><strong>Device/operational data (non-tracking):</strong> app version and error/performance logs for debugging.</li>
@@ -71,18 +84,18 @@
       </ul>
       <p class="muted"><span class="badge">Note</span> We do not collect Apple Health/Google Fit health data, do not use advertising identifiers (IDFA/AAID), and do not sell personal data.</p>
 
-      <h2 class="section">Purposes & legal bases (GDPR)</h2>
+      <h2 class="section">Purposes &amp; legal bases (GDPR)</h2>
       <ul>
         <li class="item"><strong>Core features:</strong> show routes, compute/visualize coverage, badges, and stats. <em>(Art. 6(1)(b) – contract)</em></li>
-        <li class="item"><strong>Synchronization:</strong> import past/new activities via Strava/Garmin. <em>(Art. 6(1)(b))</em></li>
+        <li class="item"><strong>Synchronization:</strong> import past/new activities via Strava. <em>(Art. 6(1)(b))</em></li>
         <li class="item"><strong>Security/troubleshooting:</strong> operations, logging, abuse prevention. <em>(Art. 6(1)(f) – legitimate interests)</em></li>
-        <li class="item"><strong>Extended access:</strong> private activities are processed only if you explicitly consent in Strava/Garmin. <em>(Art. 6(1)(a) – consent)</em></li>
+        <li class="item"><strong>Extended access:</strong> private activities are processed only if you explicitly consent in Strava. <em>(Art. 6(1)(a) – consent)</em></li>
       </ul>
 
       <h2 class="section">Sources</h2>
-      <p>Data comes from you and the services you choose to connect (Strava/Garmin). You can revoke access anytime in Strava or Garmin Connect settings.</p>
+      <p>Data comes from you and Strava, which you choose to connect. You can revoke access anytime in Strava’s settings.</p>
 
-      <h2 class="section">Retention & deletion</h2>
+      <h2 class="section">Retention &amp; deletion</h2>
       <ul>
         <li class="item">Account, tokens, derived coverage, and imported activity snapshots are kept while your account is active.</li>
         <li class="item"><strong>Deletion:</strong> delete your account (and associated data) in the app under <em>Settings → Delete account</em> or by contacting us.</li>
@@ -90,11 +103,11 @@
         <li class="item">Operational logs are typically retained short-term (e.g., 30–90 days) for security/debugging.</li>
       </ul>
 
-      <h2 class="section">Sharing & processors</h2>
+      <h2 class="section">Sharing &amp; processors</h2>
       <ul>
         <li class="item"><strong>No sale/sharing with advertisers.</strong></li>
         <li class="item"><strong>Processors (operations):</strong> hosting/infrastructure (e.g., Render) and database providers. They process data only under our instructions and appropriate agreements.</li>
-        <li class="item"><strong>Connected services:</strong> Strava/Garmin receive only the requests needed to import your activities based on your consent with them.</li>
+        <li class="item"><strong>Connected services:</strong> Strava receives only the requests needed to import your activities based on your consent with it.</li>
       </ul>
 
       <h2 class="section">International transfers</h2>
@@ -113,8 +126,8 @@
       <h2 class="section">Changes</h2>
       <p>We may update this policy. Material changes will be communicated in-app or via email. The latest version is available in the app and/or on the website.</p>
 
-      <h2 class="section">Disconnecting Strava/Garmin</h2>
-      <p>You can revoke access in <strong>Strava</strong> or <strong>Garmin Connect</strong> at any time. You can also disconnect within Footprints settings and/or delete your account.</p>
+      <h2 class="section">Disconnecting Strava</h2>
+      <p>You can revoke access in <strong>Strava</strong> at any time. You can also disconnect within Footprints settings and/or delete your account.</p>
     </main>
   </div>
 </body>

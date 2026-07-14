@@ -43,7 +43,11 @@
             "datePublished": "2026-07-14",
             "dateModified": "2026-07-14",
             "inLanguage": "da-DK",
-            "image": "https://gust1609.github.io/Footprints-Site/og-footprints.jpg",
+            "image": [
+              "https://gust1609.github.io/Footprints-Site/og-footprints.jpg",
+              "https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-coverage-map.webp",
+              "https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-badges.webp"
+            ],
             "author": {
               "@type": "Organization",
               "name": "Footprints",
@@ -132,26 +136,28 @@
               <p>I stedet for kun at fokusere på tempo, distance og personlige rekorder viser Footprints et andet slags fremskridt: <strong>hvor meget af et område du har oplevet</strong>. Hver ny vej, sti eller afstikker kan flytte din dækningsprocent.</p>
 
               <figure class="article-figure">
-                <div class="article-map-illustration" role="group" aria-label="Illustration af et Footprints-kort med rute og manglende punkter">
-                  <svg viewBox="0 0 760 420" role="img" aria-label="Grønne dækningsområder, lilla løberute og orange manglende punkter">
-                    <rect width="760" height="420" rx="32" fill="#eff1e9" />
-                    <path d="M0 55 197 22l84 104-46 131L0 291Z" fill="#d8e8d5" />
-                    <path d="m281 126 164-85 128 91-55 142-283-17Z" fill="#a9d5b2" />
-                    <path d="M0 291 235 257l84 163H0Z" fill="#e1eddd" />
-                    <path d="m235 257 283 17 89 146H319Z" fill="#c6e0c7" />
-                    <path d="M573 132 760 69v351H607l-89-146Z" fill="#d3e6d2" />
-                    <g fill="none" stroke="#fff" stroke-linecap="round">
-                      <path d="M-20 102c172 46 267-2 389 48 117 48 220 23 417-28" stroke-width="13" />
-                      <path d="M158-20c27 106 4 174 78 247 65 64 55 130 79 221" stroke-width="11" />
-                      <path d="M-12 333c147-63 256-15 367-67 116-55 228-53 426-19" stroke-width="12" />
-                    </g>
-                    <path d="M87 350c65-58 101-103 154-150 55-49 127-47 174-112 44-60 115-47 170-17" fill="none" stroke="#fff" stroke-width="17" stroke-linecap="round" />
-                    <path d="M87 350c65-58 101-103 154-150 55-49 127-47 174-112 44-60 115-47 170-17" fill="none" stroke="#4e5dff" stroke-width="9" stroke-linecap="round" />
-                    <g fill="#f47b4d" stroke="#fff" stroke-width="4"><circle cx="135" cy="112" r="10" /><circle cx="515" cy="130" r="10" /><circle cx="565" cy="326" r="10" /><circle cx="226" cy="347" r="10" /><circle cx="688" cy="208" r="10" /></g>
-                  </svg>
-                  <div class="article-map-key"><span><i class="key-route"></i>Din rute</span><span><i class="key-missing"></i>Mangler at blive besøgt</span></div>
+                <div class="article-screenshot-stage" role="group" aria-label="Screenshots af Footprints-kortet og appens dækningsoversigt">
+                  <img
+                    class="article-screen article-screen-map"
+                    src="assets/screenshots/footprints-coverage-map.webp"
+                    width="600"
+                    height="1300"
+                    alt="Footprints-kortet med Strava-ruter og farvet bydelsdækning i København"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    class="article-screen article-screen-progress"
+                    src="assets/screenshots/footprints-district-progress.webp"
+                    width="600"
+                    height="1300"
+                    alt="Footprints-oversigt med dækningsprocenter for Københavns bydele"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="article-screen-note"><span>Rigtige appskærme</span><strong>Fra løberute til synlig fremdrift</strong></div>
                 </div>
-                <figcaption>Footprints samler dine aktiviteter og viser både besøgt dækning og de orange punkter, du stadig mangler.</figcaption>
+                <figcaption>Footprints samler dine aktiviteter på kortet og omsætter dem til konkret dækning for hvert område.</figcaption>
               </figure>
             </section>
 

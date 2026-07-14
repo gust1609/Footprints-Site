@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gust1609.github.io/Footprints-Site/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-coverage-map.webp</image:loc>
+      <image:title>Footprints dækningskort med Strava-ruter</image:title>
+      <image:caption>Footprints viser samlede løberuter og bydelsdækning i København.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-badges.webp</image:loc>
+      <image:title>Badges og bydelsdækning i Footprints</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-run-statistics.webp</image:loc>
+      <image:title>Løbestatistik i Footprints</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://gust1609.github.io/Footprints-Site/se-hvor-du-har-loebet.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-coverage-map.webp</image:loc>
+      <image:title>Footprints-kort med samlet løbedækning</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gust1609.github.io/Footprints-Site/assets/screenshots/footprints-district-progress.webp</image:loc>
+      <image:title>Dækningsprocenter for Københavns bydele i Footprints</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://gust1609.github.io/Footprints-Site/faq.html</loc>

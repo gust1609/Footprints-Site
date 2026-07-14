@@ -1,72 +1,125 @@
-<!-- faq.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ – Footprints</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh; color: #fff; line-height: 1.7;
-    }
-    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
-    .back-link { display:inline-flex; gap:.5rem; color:rgba(255,255,255,.85); text-decoration:none; margin-bottom:2rem; font-weight:500; }
-    .back-link:hover { color:#fff; transform: translateX(-3px); transition: .2s; }
-    .header { text-align:center; margin-bottom: 2rem; }
-    .title {
-      font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800; margin-bottom:.5rem;
-      background: linear-gradient(45deg, #fff, #f0f8ff);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      text-shadow: 0 0 30px rgba(255,255,255,.25);
-    }
-    .subtitle { opacity:.9; font-weight:300; }
-    .content {
-      background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
-      border-radius:18px; padding: 2rem; backdrop-filter: blur(12px);
-      box-shadow: 0 15px 30px rgba(0,0,0,.15);
-    }
-    h2.section { font-size:1.35rem; margin: 1.75rem 0 .75rem; display:flex; align-items:center; gap:.6rem; }
-    h2.section::before { content:''; width:4px; height:22px; background:linear-gradient(45deg,#FF6B6B,#4ECDC4); border-radius:2px; }
-    p.answer { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
-      border-radius:12px; padding: .9rem 1rem; margin:.6rem 0; }
-    a { color:#FFD700; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="index.html" class="back-link">← Back to Footprints</a>
-
-    <header class="header">
-      <h1 class="title">FAQ</h1>
-      <p class="subtitle">Answers to common questions</p>
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4e9" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="description" content="Få svar om Footprints, Strava-synkronisering, dækningskort, orange punkter, aktiviteter, gratis adgang, Pro og privatliv." />
+    <meta property="og:site_name" content="Footprints" />
+    <meta property="og:title" content="Spørgsmål og svar om Footprints" />
+    <meta property="og:description" content="Få svar om Strava, dækningskort, aktiviteter, orange punkter og Footprints Pro." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:url" content="https://gust1609.github.io/Footprints-Site/faq.html" />
+    <meta property="og:image" content="https://gust1609.github.io/Footprints-Site/og-footprints.jpg" />
+    <link rel="canonical" href="https://gust1609.github.io/Footprints-Site/faq.html" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%2317372A%22/><ellipse cx=%2225%22 cy=%2223%22 rx=%229%22 ry=%2214%22 transform=%22rotate(-22 25 23)%22 fill=%22%23CDEB72%22/><ellipse cx=%2241%22 cy=%2243%22 rx=%229%22 ry=%2214%22 transform=%22rotate(-22 41 43)%22 fill=%22%23CDEB72%22/></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Spørgsmål og svar – Footprints</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "FAQPage",
+            "@id": "https://gust1609.github.io/Footprints-Site/faq.html#faq",
+            "mainEntity": [
+              {"@type":"Question","name":"Hvad er Footprints?","acceptedAnswer":{"@type":"Answer","text":"Footprints er en iPhone-app, der omsætter GPS-aktiviteter fra Strava til personlig dækning af Københavns bydele samt sogne og meningsfulde postnummerområder i hele Danmark."}},
+              {"@type":"Question","name":"Hvilke aktiviteter tæller?","acceptedAnswer":{"@type":"Answer","text":"Løb, trailløb, gåture, hikes og udvalgte cykelture kan tælle, når aktiviteten har GPS-data."}},
+              {"@type":"Question","name":"Hvordan virker synkronisering med Strava?","acceptedAnswer":{"@type":"Answer","text":"Når Strava-kontoen er forbundet, kan Footprints hente nye og opdaterede aktiviteter. Strava giver normalt appen besked om ændringer, og du kan også starte en manuel opdatering fra kortet."}},
+              {"@type":"Question","name":"Hvordan beregnes dækning?","acceptedAnswer":{"@type":"Answer","text":"Footprints sammenligner GPS-ruten med relevante vej- og stipunkter fra OpenStreetMap. Punkter tæt på ruten bliver markeret som besøgt, og områdets procent viser besøgte punkter i forhold til det samlede antal."}},
+              {"@type":"Question","name":"Hvad er de orange punkter?","acceptedAnswer":{"@type":"Answer","text":"Orange punkter er steder, du endnu ikke har dækket. De er inspiration til næste tur; du vælger selv ruten og rækkefølgen."}},
+              {"@type":"Question","name":"Er Footprints kun til København?","acceptedAnswer":{"@type":"Answer","text":"Nej. Bydelslaget dækker København, mens sogne og meningsfulde postnummerområder gør det muligt at følge fremskridt på tværs af Danmark."}},
+              {"@type":"Question","name":"Hvad får jeg gratis?","acceptedAnswer":{"@type":"Answer","text":"Gratisversionen giver adgang til to bydele, to sogne og to postnummerområder, som vælges automatisk efter din højeste dækning. Alle fremskridt gemmes. Pro åbner alle områder."}}
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type":"ListItem","position":1,"name":"Footprints","item":"https://gust1609.github.io/Footprints-Site/"},
+              {"@type":"ListItem","position":2,"name":"Spørgsmål og svar","item":"https://gust1609.github.io/Footprints-Site/faq.html"}
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="support-page">
+    <a class="skip-link" href="#indhold">Gå til indhold</a>
+    <header class="site-header is-solid" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="index.html" aria-label="Footprints – gå til forsiden">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="currentColor" /><ellipse cx="15.5" cy="14.5" rx="5.2" ry="8" transform="rotate(-24 15.5 14.5)" /><ellipse cx="25.5" cy="26.5" rx="5.2" ry="8" transform="rotate(-24 25.5 26.5)" /></svg>
+          <span>Footprints</span>
+        </a>
+        <a class="back-link" href="index.html"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4m5-5-5 5 5 5" /></svg> Til forsiden</a>
+      </div>
     </header>
 
-    <main class="content">
-      <h2 class="section">What is Footprints?</h2>
-      <p class="answer">Footprints is an application that helps runners see activities and visualize coverage of the areas they've explored.</p>
+    <main id="indhold" class="support-main">
+      <section class="support-hero">
+        <div class="shell support-hero-inner">
+          <p class="eyebrow">Hjælp og svar</p>
+          <h1>Godt at vide om Footprints.</h1>
+          <p>Her finder du svar om aktiviteter, dækning, orange punkter, privatliv og abonnement.</p>
+        </div>
+      </section>
 
-       <h2 class="section">How does it work?</h2>
-      <p class="answer"> Footprints compares your GPS routes against OpenStreetMap nodes in each district. If you come within about 20 meters of a node, it is marked as visited. Coverage is the percentage of visited nodes out of the total nodes in that district, and unvisited nodes are saved so future recalculations process only what is missing.</p>
+      <section class="shell support-content">
+        <div class="support-aside">
+          <span class="support-aside-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-6v.01M9.8 9a2.3 2.3 0 1 1 3.4 2c-.8.5-1.2 1-1.2 2" /></svg>
+          </span>
+          <h2>Kan du ikke finde svaret?</h2>
+          <p>Skriv til os, så hjælper vi dig videre.</p>
+          <a href="mailto:gustav.manthorpe@gmail.com">Send en e-mail</a>
+        </div>
 
-      <h2 class="section">Do I need a Strava account?</h2>
-      <p class="answer">Yes. Footprints syncs with your Strava account to import runs and display coverage. You'll be prompted to connect your account when you first sign in.</p>
-
-      <h2 class="section">How often does the app sync with Strava?</h2>
-      <p class="answer">The app synchronizes your latest runs whenever you open the map screen. A nightly job also updates all connected accounts.</p>
-
-      <h2 class="section">Why am I not seeing my latest run?</h2>
-      <p class="answer">Synchronization can take a few minutes. Make sure your Strava activity is set to public and refresh the map screen to trigger a manual sync.</p>
-
-      <h2 class="section">Can I recalculate my coverage manually?</h2>
-      <p class="answer">Yes. You can trigger a manual recalculation from the sync Strava activity if you believe coverage is out of date.</p>
-
-      <h2 class="section">Who can access my data?</h2>
-      <p class="answer">Your run data is private to your account. Footprints only stores the information necessary to display your coverage and does not share it with third parties.</p>
+        <div class="faq-list support-faq">
+          <article class="faq-item is-open">
+            <h2><button type="button" aria-expanded="true" aria-controls="support-answer-1">Hvad er Footprints?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-1"><p>Footprints er en iPhone-app, der omsætter dine GPS-aktiviteter fra Strava til personlig dækning af Københavns bydele samt sogne og meningsfulde postnummerområder i hele Danmark.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-2">Hvilke aktiviteter tæller?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-2" hidden><p>Løb, trailløb, gåture, hikes og udvalgte cykelture kan tælle, når aktiviteten har GPS-data. Aktiviteter uden en registreret rute kan ikke bruges til dækning.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-3">Hvordan virker synkronisering med Strava?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-3" hidden><p>Når din Strava-konto er forbundet, kan Footprints hente nye og opdaterede aktiviteter. Strava giver normalt appen besked om ændringer, og du kan også starte en manuel opdatering fra kortet.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-4">Hvordan beregnes dækning?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-4" hidden><p>Footprints sammenligner din GPS-rute med relevante vej- og stipunkter fra OpenStreetMap. Punkter tæt på ruten bliver markeret som besøgt, og områdets procent viser besøgte punkter i forhold til det samlede antal.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-5">Hvad er de orange punkter?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-5" hidden><p>Orange punkter er steder, du endnu ikke har dækket. De er inspiration til din næste tur; du vælger selv ruten og rækkefølgen.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-6">Hvorfor mangler min seneste aktivitet?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-6" hidden><p>Behandling kan tage et øjeblik. Åbn kortet og brug opdateringsknappen. Kontrollér også, at aktiviteten har GPS-data, og at din Strava-forbindelse stadig er aktiv.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-7">Er Footprints kun til København?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-7" hidden><p>Nej. Bydelslaget dækker København, mens sogne og meningsfulde postnummerområder gør det muligt at følge fremskridt på tværs af Danmark.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-8">Hvad får jeg gratis?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-8" hidden><p>Gratisversionen giver adgang til to bydele, to sogne og to postnummerområder, som vælges automatisk efter din højeste dækning. Alle dine fremskridt gemmes. Pro åbner alle områder.</p></div>
+          </article>
+          <article class="faq-item">
+            <h2><button type="button" aria-expanded="false" aria-controls="support-answer-9">Hvem kan se mine aktivitetsdata?<span class="faq-icon" aria-hidden="true"><i></i><i></i></span></button></h2>
+            <div class="faq-answer" id="support-answer-9" hidden><p>Dine ruter og dit personlige kort er knyttet til din konto. Footprints bruger dataene til appens funktioner. Du kan læse detaljerne i <a href="privacy-da.html">privatlivspolitikken</a> og kan slette din konto fra indstillingerne.</p></div>
+          </article>
+        </div>
+      </section>
     </main>
-  </div>
-</body>
+
+    <footer class="site-footer compact-footer">
+      <div class="shell footer-bottom"><span>© <span data-current-year>2026</span> Footprints</span><span><a href="privacy-da.html">Privatlivspolitik</a> · <a href="mailto:gustav.manthorpe@gmail.com">Kontakt</a></span></div>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gust1609.github.io/Footprints-Site/sitemap.xml

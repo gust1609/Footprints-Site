@@ -1,454 +1,480 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Footprints - Discover Your City</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.3;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: linear-gradient(45deg, #fff, #f0f8ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)); }
-      to { filter: drop-shadow(0 0 30px rgba(255,255,255,0.5)); }
-    }
-
-    .hero .subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: slideUp 0.8s ease-out 0.3s both;
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 0.9; transform: translateY(0); }
-    }
-
-    .emoji {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-20px); }
-      60% { transform: translateY(-10px); }
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 4rem 0;
-      animation: slideUp 0.8s ease-out 0.6s both;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.5s;
-    }
-
-    .feature-card:hover::before {
-      left: 100%;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      border-color: rgba(255, 255, 255, 0.4);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .compliance {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      margin: 3rem 0;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      animation: slideUp 0.8s ease-out 0.9s both;
-    }
-
-    .compliance h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .compliance-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      list-style: none;
-    }
-
-    .compliance-list li {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .compliance-list li:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateX(5px);
-    }
-
-    .compliance-list li::before {
-      content: '✅';
-      margin-right: 0.75rem;
-      font-size: 1.2rem;
-    }
-
-    .cta-section {
-      text-align: center;
-      margin: 4rem 0;
-      animation: slideUp 0.8s ease-out 1.2s both;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-
-    .btn {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary {
-      background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-      color: white;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
-    }
-
-    .contact {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 4rem;
-    }
-
-    .contact a {
-      color: #FFD700;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .contact a:hover {
-      color: #FFF;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-
-    .floating-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .floating-element {
-      position: absolute;
-      opacity: 0.1;
-      animation: floatAround 20s infinite linear;
-    }
-
-    .floating-element:nth-child(1) {
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-      font-size: 2rem;
-    }
-
-    .floating-element:nth-child(2) {
-      top: 60%;
-      right: 10%;
-      animation-delay: -5s;
-      font-size: 1.5rem;
-    }
-
-    .floating-element:nth-child(3) {
-      bottom: 20%;
-      left: 20%;
-      animation-delay: -10s;
-      font-size: 2.5rem;
-    }
-
-    @keyframes floatAround {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(100px, -50px) rotate(90deg); }
-      50% { transform: translate(-50px, -100px) rotate(180deg); }
-      75% { transform: translate(-100px, 50px) rotate(270deg); }
-      100% { transform: translate(0, 0) rotate(360deg); }
-    }
-
-    @media (max-width: 768px) {
-      .features {
-        grid-template-columns: 1fr;
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4e9" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="apple-itunes-app" content="app-id=6747681968" />
+    <meta
+      name="description"
+      content="Forbind Strava og se, hvilke bydele, sogne og postnumre du har udforsket. Footprints hjælper dig med at løbe nye gader og følge din dækning."
+    />
+    <meta property="og:site_name" content="Footprints" />
+    <meta property="og:title" content="Footprints – Se hvor du har løbet på ét kort" />
+    <meta
+      property="og:description"
+      content="Gør dine ture til et dækningskort, find de steder du mangler, og oplev Danmark én vej ad gangen."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:url" content="https://gust1609.github.io/Footprints-Site/" />
+    <meta property="og:image" content="https://gust1609.github.io/Footprints-Site/og-footprints.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Footprints viser Strava-ruter og personlig dækning på et Danmarkskort" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Footprints – Se hvor du har løbet på ét kort" />
+    <meta name="twitter:description" content="Forbind Strava, se din dækning, og find nye gader at udforske." />
+    <meta name="twitter:image" content="https://gust1609.github.io/Footprints-Site/og-footprints.jpg" />
+    <link rel="canonical" href="https://gust1609.github.io/Footprints-Site/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%2317372A%22/><ellipse cx=%2225%22 cy=%2223%22 rx=%229%22 ry=%2214%22 transform=%22rotate(-22 25 23)%22 fill=%22%23CDEB72%22/><ellipse cx=%2241%22 cy=%2243%22 rx=%229%22 ry=%2214%22 transform=%22rotate(-22 41 43)%22 fill=%22%23CDEB72%22/></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Footprints: Se hvor du har løbet på ét kort</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://gust1609.github.io/Footprints-Site/#website",
+            "url": "https://gust1609.github.io/Footprints-Site/",
+            "name": "Footprints",
+            "alternateName": "Footprints – Run Mapper",
+            "inLanguage": "da-DK"
+          },
+          {
+            "@type": "MobileApplication",
+            "@id": "https://gust1609.github.io/Footprints-Site/#app",
+            "name": "Footprints – Run Mapper",
+            "operatingSystem": "iOS 15.1 eller nyere",
+            "applicationCategory": "HealthApplication",
+            "description": "Footprints visualiserer din personlige dækning af danske bydele, sogne og postnumre ud fra dine Strava-aktiviteter.",
+            "url": "https://gust1609.github.io/Footprints-Site/",
+            "downloadUrl": "https://apps.apple.com/dk/app/footprints-run-mapper/id6747681968",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "DKK",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        ]
       }
-      
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="floating-elements">
-    <div class="floating-element">🏃‍♂️</div>
-    <div class="floating-element">📍</div>
-    <div class="floating-element">🗺️</div>
-  </div>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#indhold">Gå til indhold</a>
 
-  <div class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <div class="emoji">🏃‍♂️</div>
-        <h1>Footprints</h1>
-        <p class="subtitle">Visualize how much of your city you've explored by foot using your Strava and Garmin activities. Turn every run into a journey of discovery.</p>
+    <header class="site-header" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Footprints – gå til toppen">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="12" fill="currentColor" />
+            <ellipse cx="15.5" cy="14.5" rx="5.2" ry="8" transform="rotate(-24 15.5 14.5)" />
+            <ellipse cx="25.5" cy="26.5" rx="5.2" ry="8" transform="rotate(-24 25.5 26.5)" />
+          </svg>
+          <span>Footprints</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primær navigation">
+          <a href="#saadan-virker-det">Sådan virker det</a>
+          <a href="#daekning">Dækning</a>
+          <a href="se-hvor-du-har-loebet.html">Guide</a>
+          <a href="#spoergsmaal">Spørgsmål</a>
+        </nav>
+
+        <a
+          class="button button-small button-dark"
+          href="https://apps.apple.com/dk/app/footprints-run-mapper/id6747681968"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>Hent appen</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4h10v10M15.5 4.5 5 15" /></svg>
+        </a>
       </div>
-    </section>
+    </header>
 
-    <section class="features">
-      <div class="feature-card">
-        <div class="feature-icon">🔗</div>
-        <h3>Smart Integration</h3>
-        <p>Seamlessly connects with Strava and Garmin to automatically import your runs and track your exploration progress across your favorite platforms.</p>
+    <main id="indhold">
+      <section class="hero" id="top">
+        <div class="hero-route hero-route-one" aria-hidden="true"></div>
+        <div class="hero-route hero-route-two" aria-hidden="true"></div>
+
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow hero-enter hero-enter-one">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              Dine ture. Dit kort. Nye steder.
+            </p>
+            <h1 class="hero-enter hero-enter-two">
+              Se hvor du har løbet—og hvad du <em>mangler.</em>
+            </h1>
+            <p class="hero-lead hero-enter hero-enter-three">
+              Footprints samler dine Strava-ruter på ét levende dækningskort. Se dine fremskridt, find nye gader at løbe, og oplev Danmark én vej ad gangen.
+            </p>
+            <div class="hero-actions hero-enter hero-enter-four">
+              <a
+                class="button button-primary"
+                href="https://apps.apple.com/dk/app/footprints-run-mapper/id6747681968"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.9c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.7.9-.8 0-2-1-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.1-1.2-3.1-4.3ZM14.2 5.7c.7-.9 1.2-2.1 1.1-3.3-1.1 0-2.4.7-3.2 1.6-.7.8-1.3 2-1.1 3.2 1.2.1 2.5-.6 3.2-1.5Z" /></svg>
+                <span><small>Hent i</small>App Store</span>
+              </a>
+              <a class="text-link" href="#saadan-virker-det">
+                Se hvordan det virker
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
+              </a>
+            </div>
+            <p class="hero-note hero-enter hero-enter-five">
+              <span class="status-dot" aria-hidden="true"></span>
+              Til iPhone · Forbundet med Strava
+            </p>
+          </div>
+
+          <div class="hero-visual hero-enter hero-enter-three" role="group" aria-label="Illustration af Footprints' dækningskort">
+            <div class="map-caption map-caption-top">
+              <span class="caption-icon caption-route" aria-hidden="true"></span>
+              Din seneste tur
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-status" aria-hidden="true">
+                  <span>9:41</span>
+                  <span class="dynamic-island"></span>
+                  <span>● ◒</span>
+                </div>
+                <div class="map-toolbar">
+                  <span class="mini-brand">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.8 3.4c2-.7 4.5.8 5.5 3.5s.1 5.5-1.9 6.2-4.5-.8-5.5-3.5-.1-5.5 1.9-6.2Zm6.8 8.5c2-.7 4.5.8 5.5 3.5s.1 5.5-1.9 6.2-4.5-.8-5.5-3.5-.1-5.5 1.9-6.2Z" /></svg>
+                  </span>
+                  <span class="map-type-pill">Bydele</span>
+                  <span class="map-control" aria-hidden="true">⋯</span>
+                </div>
+
+                <svg class="concept-map" viewBox="0 0 360 610" role="img" aria-label="Kort med grønne dækningsområder, en lilla løberute og orange manglende punkter">
+                  <rect width="360" height="610" fill="#eff1e9" />
+                  <g class="map-water">
+                    <path d="M302-20c-28 75-17 127-38 190-20 60-31 110-17 178 11 53 37 103 28 166-4 28-15 60-35 116h140V-20Z" />
+                  </g>
+                  <g class="map-areas">
+                    <path d="M-10 42 98 23l58 82-25 91-126 21Z" fill="#dce9d8" />
+                    <path d="m156 105 90-45 55 91-37 93-133-48Z" fill="#cbe4cc" />
+                    <path d="m5 217 126-21 48 114-76 84-116-52Z" fill="#e1eddd" />
+                    <path d="m131 196 133 48-22 125-63-59Z" fill="#a7d6b5" />
+                    <path d="m103 394 139-25 26 111-94 81-109-54Z" fill="#d3e8d3" />
+                  </g>
+                  <g class="map-roads" fill="none" stroke-linecap="round">
+                    <path d="M-18 123C72 111 127 141 210 111s130-20 182-7" stroke-width="8" />
+                    <path d="M14 572c76-81 68-150 123-216 49-58 77-122 65-286" stroke-width="7" />
+                    <path d="M-14 314c85-38 138-15 202-48 54-28 101-63 190-63" stroke-width="6" />
+                    <path d="M-5 471c95-43 157-23 215-64 54-38 105-60 169-55" stroke-width="7" />
+                    <path d="M61-12c39 78 20 141 62 193 42 51 15 115 39 176 29 73 107 117 122 230" stroke-width="5" />
+                    <path d="M9 36c82 41 123 5 189 42 58 33 87 18 158-11" stroke-width="4" />
+                  </g>
+                  <g class="map-streets" fill="none" stroke-linecap="round">
+                    <path d="M42 175 85 98l76 54 58-32" />
+                    <path d="m43 246 67 42-38 60" />
+                    <path d="m188 203 24 54-61 37" />
+                    <path d="m202 398-57 46 72 34" />
+                    <path d="m76 429 46 37-23 58" />
+                  </g>
+                  <g class="run-route" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="route-halo" d="M48 486c32-37 66-61 82-106 20-55-5-95 28-135 24-29 64-24 74-62 8-31-19-53-1-83" />
+                    <path class="route-line" d="M48 486c32-37 66-61 82-106 20-55-5-95 28-135 24-29 64-24 74-62 8-31-19-53-1-83" />
+                  </g>
+                  <g class="missing-points">
+                    <circle cx="82" cy="155" r="7" />
+                    <circle cx="269" cy="175" r="7" />
+                    <circle cx="87" cy="329" r="7" />
+                    <circle cx="217" cy="343" r="7" />
+                    <circle cx="287" cy="414" r="7" />
+                    <circle cx="126" cy="526" r="7" />
+                  </g>
+                  <circle class="location-halo" cx="48" cy="486" r="14" />
+                  <circle class="location-point" cx="48" cy="486" r="6" />
+                </svg>
+
+                <div class="map-sheet">
+                  <div class="sheet-handle" aria-hidden="true"></div>
+                  <div class="sheet-heading">
+                    <div>
+                      <span class="sheet-kicker">Din dækning</span>
+                      <strong>Nørrebro</strong>
+                    </div>
+                    <span class="coverage-number">64,8%</span>
+                  </div>
+                  <div class="progress-track" aria-hidden="true"><span class="progress-value-65"></span></div>
+                  <p><span class="orange-dot" aria-hidden="true"></span> 312 punkter tilbage at udforske</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-caption map-caption-bottom">
+              <span class="caption-icon caption-dot" aria-hidden="true"></span>
+              Her mangler du
+            </div>
+          </div>
+        </div>
+
+        <div class="shell hero-proof" role="group" aria-label="Footprints kort fortalt">
+          <div><strong>Strava</strong><span>Aktiviteter ind</span></div>
+          <div><strong>3 kortlag</strong><span>Bydele, sogne og postnumre</span></div>
+          <div><strong>Hele Danmark</strong><span>Nye steder at opdage</span></div>
+        </div>
+      </section>
+
+      <section class="section section-how" id="saadan-virker-det">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Sådan virker det</p>
+            <h2>Fra aktivitet til opdagelse på tre enkle trin.</h2>
+            <p>Footprints ændrer ikke måden, du registrerer dine ture på. Appen giver bare alle de kilometer, du allerede samler, en ny mening.</p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card reveal">
+              <div class="step-top">
+                <span class="step-number">01</span>
+                <span class="step-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 7.5h-2a4 4 0 0 0 0 8h3m5-8h3a4 4 0 0 1 0 8h-2m-7-3h7M12 9v6" /></svg>
+                </span>
+              </div>
+              <h3>Forbind Strava</h3>
+              <p>Dine løbe-, gå-, hike- og cykelture med GPS bliver hentet ind og lagt på dit personlige kort.</p>
+            </article>
+
+            <article class="step-card step-card-featured reveal">
+              <div class="step-top">
+                <span class="step-number">02</span>
+                <span class="step-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15" /></svg>
+                </span>
+              </div>
+              <h3>Se dit aftryk</h3>
+              <p>Ruterne sammenlignes med punkter fra OpenStreetMap, så din dækning vokser de steder, du faktisk har været.</p>
+              <div class="mini-progress" role="img" aria-label="Eksempel på voksende dækning">
+                <span></span><span></span><span></span><span></span><i></i><i></i>
+              </div>
+            </article>
+
+            <article class="step-card reveal">
+              <div class="step-top">
+                <span class="step-number">03</span>
+                <span class="step-icon step-icon-orange">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-12A7 7 0 1 0 5 9c0 6.8 7 12 7 12Z" /><circle cx="12" cy="9" r="2.2" /></svg>
+                </span>
+              </div>
+              <h3>Find dit næste sted</h3>
+              <p>Orange punkter viser, hvad du mangler. Du vælger selv ruten og rækkefølgen—målet er at opdage noget nyt.</p>
+            </article>
+          </div>
+
+          <aside class="guide-callout reveal" aria-label="Dybdegående guide til Footprints">
+            <div>
+              <span>Ny til konceptet?</span>
+              <strong>Læs hvordan dine Strava-ruter bliver til ét samlet kort.</strong>
+            </div>
+            <a href="se-hvor-du-har-loebet.html">Læs den komplette Footprints-guide <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg></a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-coverage" id="daekning">
+        <div class="shell coverage-grid">
+          <div class="coverage-copy reveal">
+            <p class="eyebrow eyebrow-light">Tre måder at se fremskridt</p>
+            <h2>Zoom ud fra din bydel til hele Danmark.</h2>
+            <p>Det samme løb kan flytte flere slags dækning. Skift mellem tre lag og se, hvordan hver lille afstikker bliver en del af et større kort.</p>
+
+            <div class="coverage-tabs" role="tablist" aria-label="Vælg kortlag">
+              <button class="coverage-tab is-active" id="coverage-tab-districts" type="button" role="tab" aria-selected="true" aria-controls="coverage-districts" data-coverage-tab="districts">Bydele</button>
+              <button class="coverage-tab" id="coverage-tab-sogne" type="button" role="tab" aria-selected="false" aria-controls="coverage-sogne" data-coverage-tab="sogne">Sogne</button>
+              <button class="coverage-tab" id="coverage-tab-postnumre" type="button" role="tab" aria-selected="false" aria-controls="coverage-postnumre" data-coverage-tab="postnumre">Postnumre</button>
+            </div>
+
+            <div class="coverage-panels" aria-live="polite">
+              <div class="coverage-panel" id="coverage-districts" role="tabpanel" aria-labelledby="coverage-tab-districts" data-coverage-panel="districts">
+                <span class="coverage-panel-label">Københavns bydele</span>
+                <h3>Gør de lokale ture synlige</h3>
+                <p>Følg din procent i bydele som Nørrebro, Østerbro og Amager Vest—og se præcis, hvor der stadig er veje at opdage.</p>
+              </div>
+              <div class="coverage-panel" id="coverage-sogne" role="tabpanel" aria-labelledby="coverage-tab-sogne" data-coverage-panel="sogne" hidden>
+                <span class="coverage-panel-label">Danske sogne</span>
+                <h3>Se landet i mindre bidder</h3>
+                <p>Sognene giver dig tusindvis af lokale områder at udforske og gør både hverdagsruten og ferieturen til en del af det samme mål.</p>
+              </div>
+              <div class="coverage-panel" id="coverage-postnumre" role="tabpanel" aria-labelledby="coverage-tab-postnumre" data-coverage-panel="postnumre" hidden>
+                <span class="coverage-panel-label">Meningsfulde postnummerområder</span>
+                <h3>Saml hele områder på kortet</h3>
+                <p>Følg din dækning på tværs af Danmark i postnummerområder, der er samlet og tegnet, så de giver mening på et løbekort.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="coverage-visual reveal" role="group" aria-label="Illustration af tre dækningslag">
+            <div class="layer-card layer-card-back">
+              <span>Postnumre</span>
+              <strong>Hele Danmark</strong>
+            </div>
+            <div class="layer-card layer-card-middle">
+              <span>Sogne</span>
+              <strong>Lokale områder</strong>
+            </div>
+            <div class="layer-card layer-card-front">
+              <div class="layer-card-header">
+                <div><span>Bydele</span><strong>København</strong></div>
+                <span class="layer-pill">Aktiv</span>
+              </div>
+              <svg viewBox="0 0 420 320" role="img" aria-label="Grønne dækningsområder med orange manglende punkter">
+                <rect width="420" height="320" rx="24" fill="#f0f3e9" />
+                <path d="m28 43 110-18 52 69-24 82-128 12Z" fill="#cce2cb" />
+                <path d="m190 94 104-54 84 56-24 101-188-21Z" fill="#a7d3b1" />
+                <path d="m38 188 128-12 48 104-164 22Z" fill="#dcebd8" />
+                <path d="m166 176 188 21-41 92-99-9Z" fill="#c2ddc4" />
+                <g fill="none" stroke="#fff" stroke-width="5" opacity=".9">
+                  <path d="M-5 82c109 30 175 4 244 34 59 25 105 14 193-13" />
+                  <path d="M93-4c20 69 3 120 50 170 45 48 31 102 53 169" />
+                  <path d="M-9 237c91-37 143-6 218-35 69-27 123-22 220-8" />
+                </g>
+                <g fill="#f47b4d" stroke="#fff" stroke-width="3">
+                  <circle cx="91" cy="88" r="7" /><circle cx="274" cy="96" r="7" /><circle cx="121" cy="229" r="7" /><circle cx="304" cy="243" r="7" />
+                </g>
+                <path d="M67 257c38-41 58-70 95-100 35-29 78-26 108-64" fill="none" stroke="#4e5dff" stroke-width="8" stroke-linecap="round" />
+              </svg>
+              <div class="layer-stats">
+                <div><strong>12</strong><span>områder besøgt</span></div>
+                <div><strong>64,8%</strong><span>bedste dækning</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-purpose">
+        <div class="shell purpose-grid">
+          <div class="purpose-intro reveal">
+            <p class="eyebrow">Hvorfor Footprints?</p>
+            <h2>Den velkendte løbetur får et nyt formål.</h2>
+          </div>
+          <div class="purpose-list">
+            <article class="purpose-item reveal">
+              <span class="purpose-number">01</span>
+              <div><h3>Bryd med de samme ruter</h3><p>Se huller i dit kort og lad dem inspirere den næste lille afstikker.</p></div>
+            </article>
+            <article class="purpose-item reveal">
+              <span class="purpose-number">02</span>
+              <div><h3>Gør fremskridt synligt</h3><p>Procenter, historik og badges gør indsatsen konkret—også på de rolige ture.</p></div>
+            </article>
+            <article class="purpose-item reveal">
+              <span class="purpose-number">03</span>
+              <div><h3>Lær dit nærområde at kende</h3><p>En ukendt sidevej kan være alt, der skal til for at opdage et nyt hjørne af byen.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-faq" id="spoergsmaal">
+        <div class="shell faq-grid">
+          <div class="faq-intro reveal">
+            <p class="eyebrow">Ofte stillede spørgsmål</p>
+            <h2>Det praktiske, før du begynder.</h2>
+            <p>Mangler du noget? Skriv til <a href="mailto:gustav.manthorpe@gmail.com">gustav.manthorpe@gmail.com</a>.</p>
+          </div>
+
+          <div class="faq-list reveal">
+            <article class="faq-item is-open">
+              <h3>
+                <button type="button" aria-expanded="true" aria-controls="faq-answer-1">
+                  Skal jeg have en Strava-konto?
+                  <span class="faq-icon" aria-hidden="true"><i></i><i></i></span>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-1"><p>Ja. Footprints bruger Strava til at hente de aktiviteter, der danner dit kort. Du forbinder kontoen sikkert i appen og kan afbryde forbindelsen igen.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" aria-expanded="false" aria-controls="faq-answer-2">
+                  Er Footprints kun til København?
+                  <span class="faq-icon" aria-hidden="true"><i></i><i></i></span>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-2" hidden><p>Nej. Du kan følge bydele i København samt sogne og meningsfulde postnummerområder i hele Danmark.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" aria-expanded="false" aria-controls="faq-answer-3">
+                  Hvad betyder de orange punkter?
+                  <span class="faq-icon" aria-hidden="true"><i></i><i></i></span>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-3" hidden><p>De viser steder, du endnu ikke har dækket. Du vælger selv, hvilke punkter du vil opsøge, hvilken rute du tager, og i hvilken rækkefølge.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" aria-expanded="false" aria-controls="faq-answer-4">
+                  Hvordan beregnes min dækning?
+                  <span class="faq-icon" aria-hidden="true"><i></i><i></i></span>
+                </button>
+              </h3>
+              <div class="faq-answer" id="faq-answer-4" hidden><p>Din GPS-rute sammenlignes med relevante vej- og stipunkter fra OpenStreetMap. Når ruten kommer tæt på et punkt, tæller det som besøgt i de områder, punktet tilhører.</p></div>
+            </article>
+            <a class="faq-more" href="faq.html">Se alle spørgsmål <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-cta">
+        <div class="shell">
+          <div class="cta-card reveal">
+            <div class="cta-map" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <i></i>
+            </div>
+            <div class="cta-copy">
+              <p class="eyebrow eyebrow-light">Din næste tur starter her</p>
+              <h2>Hvor meget af dit kort mangler stadig?</h2>
+              <p>Forbind Strava, se dit aftryk, og find det næste sted, du aldrig har været.</p>
+              <a
+                class="button button-primary"
+                href="https://apps.apple.com/dk/app/footprints-run-mapper/id6747681968"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg class="apple-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.9c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.7.9-.8 0-2-1-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.1-1.2-3.1-4.3ZM14.2 5.7c.7-.9 1.2-2.1 1.1-3.3-1.1 0-2.4.7-3.2 1.6-.7.8-1.3 2-1.1 3.2 1.2.1 2.5-.6 3.2-1.5Z" /></svg>
+                <span><small>Hent i</small>App Store</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#top">
+            <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+              <rect width="40" height="40" rx="12" fill="currentColor" />
+              <ellipse cx="15.5" cy="14.5" rx="5.2" ry="8" transform="rotate(-24 15.5 14.5)" />
+              <ellipse cx="25.5" cy="26.5" rx="5.2" ry="8" transform="rotate(-24 25.5 26.5)" />
+            </svg>
+            <span>Footprints</span>
+          </a>
+          <p>Oplev mere. Én tur ad gangen.</p>
+        </div>
+        <div class="footer-links">
+          <div><strong>Footprints</strong><a href="#saadan-virker-det">Sådan virker det</a><a href="se-hvor-du-har-loebet.html">Guide: Se hvor du har løbet</a><a href="#daekning">Dækning</a><a href="faq.html">FAQ</a></div>
+          <div><strong>Juridisk</strong><a href="privacy-da.html">Privatlivspolitik</a><a href="privacy-en.html" lang="en">Privacy policy</a></div>
+          <div><strong>Kontakt</strong><a href="mailto:gustav.manthorpe@gmail.com">E-mail</a><a href="https://apps.apple.com/dk/app/footprints-run-mapper/id6747681968" target="_blank" rel="noreferrer">App Store</a></div>
+        </div>
       </div>
+      <div class="shell footer-bottom"><span>© <span data-current-year>2026</span> Footprints</span><span>Udviklet i København</span></div>
+    </footer>
 
-      <div class="feature-card">
-        <div class="feature-icon">🗺️</div>
-        <h3>City Coverage</h3>
-        <p>See your coverage across city districts with beautiful visualizations. Discover new neighborhoods and challenge yourself to explore every corner.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🏆</div>
-        <h3>Achievement System</h3>
-        <p>Earn badges for exploration milestones and running achievements. Gamify your fitness journey and celebrate every step of progress.</p>
-      </div>
-    </section>
-
-    <section class="compliance">
-      <h3>Fully Compliant & Trusted</h3>
-      <ul class="compliance-list">
-        <li>Official login flows ("Connect with Strava", "Sign in with Garmin")</li>
-        <li>"Powered by Strava" and "Garmin Connect compatible" branding</li>
-        <li>Links to original activity sources where applicable</li>
-        <li>Secure data handling and privacy protection</li>
-      </ul>
-    </section>
-
-   <section class="cta-section">
-  <div class="cta-buttons">
-    <a href="#download" class="btn btn-primary">📱 Get the App</a>
-    <a href="privacy-da.html" class="btn btn-secondary">📄 Privatlivspolitik (DA)</a>
-    <a href="privacy-en.html" class="btn btn-secondary">📄 Privacy Policy (EN)</a>
-  </div>
-</section>
-
-    <section class="contact">
-      <p>Ready to start exploring? Get in touch!</p>
-      <p>📧 <a href="mailto:gustav.manthorpe@gmail.com">gustav.manthorpe@gmail.com</a></p>
-    </section>
-  </div>
-
-  <script>
-    // Add some interactive sparkle effects
-    document.addEventListener('mousemove', function(e) {
-      if (Math.random() > 0.9) {
-        createSparkle(e.clientX, e.clientY);
-      }
-    });
-
-    function createSparkle(x, y) {
-      const sparkle = document.createElement('div');
-      sparkle.style.position = 'fixed';
-      sparkle.style.left = x + 'px';
-      sparkle.style.top = y + 'px';
-      sparkle.style.width = '4px';
-      sparkle.style.height = '4px';
-      sparkle.style.background = 'white';
-      sparkle.style.borderRadius = '50%';
-      sparkle.style.pointerEvents = 'none';
-      sparkle.style.zIndex = '1000';
-      sparkle.style.animation = 'sparkle 1s ease-out forwards';
-      
-      document.body.appendChild(sparkle);
-      
-      setTimeout(() => {
-        document.body.removeChild(sparkle);
-      }, 1000);
-    }
-
-    // Add sparkle animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes sparkle {
-        0% {
-          opacity: 1;
-          transform: scale(0) rotate(0deg);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1) rotate(180deg);
-        }
-        100% {
-          opacity: 0;
-          transform: scale(0) rotate(360deg);
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Parallax effect for floating elements
-    document.addEventListener('mousemove', function(e) {
-      const floatingElements = document.querySelectorAll('.floating-element');
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
-      
-      floatingElements.forEach((element, index) => {
-        const speed = (index + 1) * 0.5;
-        const x = (mouseX - 0.5) * speed * 50;
-        const y = (mouseY - 0.5) * speed * 50;
-        element.style.transform = `translate(${x}px, ${y}px)`;
-      });
-    });
-  </script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
